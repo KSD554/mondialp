@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "vite.config.js",
+      "use": "@render/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/index.html"
+    }
+  ]
+}
