@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000,  // Spécifiez le port sur lequel Vite écoute
+    port: 3000,  // Spécifiez le port pour lequel votre application écoute
+    host: true,  // Permet à Vite d'écouter sur toutes les interfaces réseau
   },
 });
