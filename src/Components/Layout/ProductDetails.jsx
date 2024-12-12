@@ -14,8 +14,7 @@ import { toast, ToastContainer } from "react-toastify";
 
 import { motion } from "framer-motion";
 
-// hove to zoom image, react magnifiy library
-import ReactImageMagnify from "react-image-magnify";
+import ImageZoom from "react-image-zoom";
 
 const ProductDetails = ({ data }) => {
   const dispatch = useDispatch();
@@ -81,20 +80,14 @@ const ProductDetails = ({ data }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -100 }}
                   transition={{ duration: 0.5 }}
-                  className="hidden 800px:block">
-                  <ReactImageMagnify
-                    {...{
-                      smallImage: {
-                        alt: "product image",
-                        isFluidWidth: `800px:${true} ${false}`,
-                        src: data?.image_Url[select]?.url,
-                      },
-                      largeImage: {
-                        src: data?.image_Url[select]?.url,
-                        width: 450,
-                        height: 800,
-                      },
-                    }}
+                  className="hidden 800px:block"
+                >
+                  <ImageZoom
+                    width={450}
+                    height={800}
+                    img={data?.image_Url[select]?.url}
+                    zoomScale={2}
+                    zoomPosition="original"
                   />
                 </motion.div>
                 <motion.div
@@ -102,7 +95,8 @@ const ProductDetails = ({ data }) => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -100 }}
                   transition={{ duration: 0.5 }}
-                  className="800px:hidden mx-auto w-full">
+                  className="800px:hidden mx-auto w-full"
+                >
                   <img
                     src={data?.image_Url[select]?.url}
                     alt="product/image"
@@ -117,7 +111,8 @@ const ProductDetails = ({ data }) => {
                     transition={{ duration: 0.5 }}
                     className={`${
                       select === 0 ? "border" : null
-                    } cursor-pointer`}>
+                    } cursor-pointer`}
+                  >
                     <img
                       src={data?.image_Url[0].url}
                       alt="product/image"
@@ -132,7 +127,8 @@ const ProductDetails = ({ data }) => {
                     transition={{ duration: 0.5 }}
                     className={`${
                       select === 1 ? "border" : null
-                    } cursor-pointer`}>
+                    } cursor-pointer`}
+                  >
                     <img
                       src={data?.image_Url[1].url}
                       alt="product/image"
@@ -148,7 +144,8 @@ const ProductDetails = ({ data }) => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 100 }}
                 transition={{ duration: 0.5 }}
-                className="w-full 800px:w-[50%] mt-0 800px:mt-9 ml-0 800px:ml-5">
+                className="w-full 800px:w-[50%] mt-0 800px:mt-9 ml-0 800px:ml-5"
+              >
                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
                 <p className="mt-2">{data.description}</p>
                 <div className="flex mt-3">
@@ -166,7 +163,8 @@ const ProductDetails = ({ data }) => {
                     <button
                       className="bg-gradient-to-b from-emerald-600 to-emerald-400 text-white px-5 py-2 mt-8 text-[1rem] "
                       onClick={decrementCount}
-                      title="Decrement">
+                      title="Decrement"
+                    >
                       -
                     </button>
 
@@ -177,7 +175,8 @@ const ProductDetails = ({ data }) => {
                     <button
                       className="bg-gradient-to-b from-emerald-600 to-emerald-400 text-white px-5 py-2 mt-8 text-[1rem] "
                       onClick={incrementCount}
-                      title="Increment">
+                      title="Increment"
+                    >
                       +
                     </button>
                   </div>
@@ -206,7 +205,8 @@ const ProductDetails = ({ data }) => {
                 <div className="mt-6 select-none">
                   <button
                     className={`${styles.button} text-white !h-11 !rounded-[4px]`}
-                    onClick={() => addToCartHandler(data?.id)}>
+                    onClick={() => addToCartHandler(data?.id)}
+                  >
                     Add to cart <AiOutlineShoppingCart className="ml-2" />
                   </button>
                 </div>
@@ -228,7 +228,8 @@ const ProductDetails = ({ data }) => {
 
                   <div>
                     <button
-                      className={`${styles.button} bg-[#6443d1] ml-8 !rounded !h-11 text-white`}>
+                      className={`${styles.button} bg-[#6443d1] ml-8 !rounded !h-11 text-white`}
+                    >
                       Send Message{" "}
                       <AiOutlineMessage className="cursor-pointer ml-1" />
                     </button>
