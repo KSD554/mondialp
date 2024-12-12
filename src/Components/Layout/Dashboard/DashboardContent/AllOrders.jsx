@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
+
 
 import { motion } from "framer-motion";
 
